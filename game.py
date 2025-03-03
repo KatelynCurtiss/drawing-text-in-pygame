@@ -1,7 +1,3 @@
-# Katelyn Curtiss
-# February 12 2025
-# Game Code
-
 import pygame
 import sys
 import config
@@ -20,20 +16,38 @@ def handle_events ():
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 return False
-        return True
+    return True
+    
+
+def draw_text(screen, text, font, text_color, x, y):
+    img = font.render(text, True, text_color)
+    screen.blit(img, (x, y))
 
 def main():
     screen = init_game()
-    clock = pygame.time.Clock() # Initialize the clock here
+    clock = pygame.time.Clock() 
+
+    my_font1 = pygame.font.SysFont('Arial',25)
+    # my_text1 = my_font1.render("Katelyn", True)
+    my_font2 = pygame.font.SysFont('Courier New',50)
+
+
     running = True
     while running:
         running = handle_events()
-    screen.fill(config.WHITE) # Use color from config
-    pygame.display.flip()
+        screen.fill(config.WHITE) 
+        
 
-    clock.tick(config.FPS) 
-pygame.quit()
 
-sys.exit()
+        draw_text(screen, "Kateyln", my_font1, config.RED, 150, 425)
+        draw_text(screen, "Keily", my_font2, config.GREEN, 450, 230)
+
+        pygame.display.flip()
+
+        clock.tick(config.FPS) 
+
+    pygame.quit()
+
+    sys.exit()
 if __name__ == "__main__":
     main()
